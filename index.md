@@ -12,6 +12,8 @@ LM-class is an education resource for contemporary language modeling, broadly co
 
 The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.
 
+LM-class was created by [Yoav Artzi](https://yoavartzi.com/). Must of the material is adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry, and please let me know, so I can correct.
+
 ## Lectures
 
 The [lectures](lectures) are organized into three sections:
