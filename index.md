@@ -65,3 +65,7 @@ I am also considering adding a PyTorch tutorial, with focus on:
 2. Handling data
 3. Conducting parameter sweeps
 4. Basic debugging techniques
+
+## Use, License, and Credit
+
+All materials are shared under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license. If using or modifying any materials, please acknowledge any source material we are pointing to, as well as LM-class.
