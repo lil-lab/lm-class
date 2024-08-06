@@ -8,19 +8,19 @@ title: LM-class
 
 Version: 2024.1beta
 
-LM-class is an education resource for contemporary language modeling, broadly construed. The materials were developed for Cornell CS 5740 Natural Language Processing, and were first taught in Spring 2024. This class constituted a significant re-formulation of CS 5740. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.
+LM-class is an education resource for contemporary language modeling, broadly construed. The materials were developed for Cornell CS 5740 Natural Language Processing, and were first used in Spring 2024. This class constituted a significant revision of CS 5740. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.
 
 The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.
 
-LM-class was created by [Yoav Artzi](https://yoavartzi.com/). Most of the material is adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry, and please let me know, so I can correct.
+LM-class was created by [Yoav Artzi](https://yoavartzi.com/). Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct.
 
 ## Lectures
 
 The [lectures](lectures) are organized into three sections:
 
 1. Warming up: this section quickly brings the students up to speed with the basics. The goal is to prepare the students for the first assignment. Beyond a quick introduction, it includes: data basics, linear perceptron, and multi-layer perceptron.
-2. Learning from raw data: this section focuses on representation learning from raw data (i.e., without any annotation or user labor). It is divided into three major parts: word embeddings, next-word-prediction language modeling, and masked language modeling. Through these subsections we introduce many of the fundamental technical concepts and methods of the field.
-3. Learning from annotated data: this section focuses on learning with annotated data. It introduces the notion of task as a framework to structure solution development, through the review of several prototypical NLP tasks. This section takes a broad view of annotated data, including covering language model alignment using annotated data (i.e., instruction tuning and RLHF).
+1. Learning with raw data: this section focuses on representation learning from raw data (i.e., without any annotation or user labor). It is divided into three major parts: word embeddings, next-word-prediction language modeling, and masked language modeling. Through these subsections we introduce many of the fundamental technical concepts and methods of the field.
+1. Learning with annotated data: this section focuses on learning with annotated data. It introduces the task as a framework to structure solution development, through the review of several prototypical NLP tasks. For each task, we discuss the problem, data, modeling decisions, and formulate a technical approach to address it. This section takes a broad view of annotated data, including covering language model alignment using annotated data (i.e., instruction tuning and RLHF).
 
 ## Assignments
 
@@ -28,11 +28,11 @@ The class includes four assignments. The assignments are available upon request.
 
 Each assignment includes instructions, report template, starter repository, code to manage a leader board, and a grading schema. The assignments emphasize building, and provide only basic starter code. Each assignment is designed to compare and contrast different approaches. The assignments are complementary to the class material, and require significant amount of self-learning and exploration.
 
-The leader board for each assignment uses a held-out test set. The students get un-labeled test examples, and submit the labels for evaluation on a pre-determined schedule. We use Github Classroom to manage the assignment. Submitting results to the leader board requires committing a results file. Because we have access to all repositories, computing the leader board simply requires pulling all students repositories at pre-determined times. Github Classroom also allows us to include unit tests that are executed each time the students push their code. Passing the unit tests is a component of the grading.
+The leader board for each assignment uses a held-out test set. The students get unlabeled test examples, and submit the labels for evaluation on a pre-determined schedule. We use GitHub Classroom to manage the assignment. Submitting results to the leader board requires committing a results file. Because we have access to all repositories, computing the leader board simply requires pulling all students repositories at pre-determined times. GitHub Classroom also allows us to include unit tests that are executed each time the students push their code. Passing the unit tests is a component of the grading.
 
 The assignments include significant implementation work and experimental development. We mandate a minimal milestone 7-10 days before the assignment deadline. We observed that this is a necessary forcing function to get students to work on the assignment early.
 
-Grading varies between assignments. Generally though, it is made of three components: automatic unit tests (i.e., autograding), a written report, and performance on the test set. Performance is a significant component of the grading and follows a per-assignment formula. We generally do not consider leader board placement for grading, except a tiny bonus for the top performer.
+Grading varies between assignments. Generally though, it is made of three components: automatic unit tests (i.e., auto-grading), a written report, and performance on the test set. Performance is a significant component of the grading and follows a per-assignment formula. We generally do not consider leader board placement for grading, except a tiny bonus for the top performer.
 
 ### Assignment 1
 
@@ -40,7 +40,7 @@ This assignment is released promptly at the beginning of the semester. The stude
 
 ### Assignment 2
 
-The focus of this assignment is language modeling (i.e., next-word prediction). The students implement, experiment with, and contrast an n-gram LM and a transformer-based LM. We ask the students to experiment with different word-level n-gram LMs by varying the n-gram size, smoothing techniques, and tokenization (words vs. sub-words). We also ask them to contrast n-gram and transformer-based LMs. Because of the computational requirements of neural models, this comparison is done on character-based LMs. We provided a buggy implementation of the transformer block. The students were asked to fix it, and build the LM on top of it. We provided autograding unit tests to evaluate progress on fixing the transformer block. We provided two benchmarks to evaluate on: perplexity on a held-out set and word error rate (WER) on a speech recognition re-ranking task. The leader board used the recognition task, because perplexity is sensitive to tokenization.
+The focus of this assignment is language modeling (i.e., next-word prediction). The students implement, experiment with, and contrast an n-gram LM and a transformer-based LM. We ask the students to experiment with different word-level n-gram LMs by varying the n-gram size, smoothing techniques, and tokenization (words vs. sub-words). We also ask them to contrast n-gram and transformer-based LMs. Because of the computational requirements of neural models, this comparison is done on character-based LMs. We provided a buggy implementation of the transformer block. The students were asked to fix it, and build the LM on top of it. We provided auto-grading unit tests to evaluate progress on fixing the transformer block. We provided two benchmarks to evaluate on: perplexity on a held-out set and word error rate on a speech recognition re-ranking task. The leader board used the recognition task, because perplexity is sensitive to tokenization.
 
 ### Assignment 3
 
@@ -50,7 +50,7 @@ The focus of this assignment are self-supervised representations. The students c
 
 The focus of this assignment is supervised sequence prediction. It uses a language-to-SQL code generation task using the ATIS benchmark, with evaluation of both surface-form correctness and database execution. The student implements three approaches to the problem: prompting with an LLM (including ICL), fine-tuning a pretrained encoder-decoder model, and training the same model from scratch. The assignment uses a T5 model that is provided to the students, and training from scratch uses the same model but with randomly initialized parameters.
 
-## Planned Additions
+## Future Plans
 
 There are several topics not covered by the current version of the lectures, and that are on the planning board to potentially be added in the future:
 
