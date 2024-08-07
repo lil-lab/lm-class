@@ -14,6 +14,8 @@ The class emphasizes technical depth rather than coverage. It does not aim to pr
 
 LM-class was created by [Yoav Artzi](https://yoavartzi.com/). Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct.
 
+The materials are distributed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license, and we hope they will find broad and diverse use.
+
 ## Lectures
 
 The [lectures](lectures) are organized into three sections:
@@ -65,7 +67,3 @@ I am also considering adding a PyTorch tutorial, with focus on:
 2. Handling data
 3. Conducting parameter sweeps
 4. Basic debugging techniques
-
-## Use, License, and Credit
-
-All materials are shared under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license. If using or modifying any materials, please acknowledge any source material we are pointing to, as well as LM-class.
