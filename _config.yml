@@ -22,6 +22,10 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: yoavartzi
 github_username: yoavartzi
 
+external_links:
+  - title: Repo
+    url: https://github.com/lil-lab/lm-class
+
 # Build settings
 markdown: kramdown
 theme: minima
