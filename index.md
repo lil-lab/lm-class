@@ -19,7 +19,7 @@ title: LM-class
 
 <p>The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.</p>
 
-<p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct. More general acknowledgements are listed <a href="#acknowledgements">below</a>.</p>
+<p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct. Acknowledgements are listed <a href="#acknowledgements">below</a>.</p>
 
 <p>The materials are distributed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license, and we hope they will find broad and diverse use.</p>
 
