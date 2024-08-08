@@ -19,7 +19,7 @@ title: LM-class
 
 <p>The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.</p>
 
-<p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct.</p>
+<p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct. More general acknowledgements are listed <a href="#acknowledgements">below</a>.</p>
 
 <p>The materials are distributed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license, and we hope they will find broad and diverse use.</p>
 
@@ -74,3 +74,10 @@ I am also considering adding a PyTorch tutorial, with focus on:
 2. Handling data
 3. Conducting parameter sweeps
 4. Basic debugging techniques
+
+## Acknowledgements
+
+This resource could not have been created if not for the amazing breadth and richness of teaching material that has been made publicly available by members of the community.
+LM-class includes material that is adapted from or heavily inspired by material created over the years by (in no particular order) Dan Klein, Alane Suhr, Greg Durrett, Luke Zettlemoyer, Mike Collins, Mohit Iyyer, Ana Marasović, Sewon Min, Chris Manning, Dan Jurafsky, Tatsunori Hashimoto, Chris Dyer, Yoav Goldberg, Graham Neubig, Lucas Bayer, Daphne Ippolito, Chenyan Xiong, and Eric Mitchell.
+More specific acknowledgements are given in each slide deck.
+I would like to extend special thanks to Jason Eisner for creating a community to discuss NLP teaching. Many thanks to Greg Durrett, Mohit Iyyer, Ana Marasović, Christian von der Weth, Nanyun (Violet) Peng, David Jurgens and man others for very helpful discussions.
