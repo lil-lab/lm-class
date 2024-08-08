@@ -1,35 +1,17 @@
-<footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-
-  <div class="wrapper">
-
-    <!-- <h2 class="footer-heading">{{ site.title | escape }}</h2> -->
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">
-            {%- if site.author -%}
-              {{ site.author | escape }}
-            {%- else -%}
-              {{ site.title | escape }}
-            {%- endif -%}
-            </li>
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
-      </div>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+        <img src="/img/brand-logo-small.png" alt="" width="40" height="40" class="d-inline-block align-text">
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">LM-course</span>
     </div>
 
-  </div>
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li><a href="https://creativecommons.org/licenses/by-nc/4.0/"><img width="40" height="40" class="d-inline-block align-text" src="/img/cc.svg"/></a></li>
+      <li><a href="https://creativecommons.org/licenses/by-nc/4.0/"><img width="40" height="40" class="d-inline-block align-text" src="/img/by.svg"/></a></li>
+      <li><a href="https://creativecommons.org/licenses/by-nc/4.0/"><img width="40" height="40" class="d-inline-block align-text" src="/img/nc.svg"/></a></li>
+    </ul>
 
-</footer>
+  </footer>
+</div>

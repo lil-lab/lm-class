@@ -10,7 +10,7 @@ title: LM-class
 
 <div class="row">
   <div class="col col-lg-7 col-12">
-    <p>LM-class is an education resource for contemporary language modeling, broadly construed. The materials were developed for Cornell CS 5740 Natural Language Processing, and were first used in Spring 2024. This class constituted a significant revision of CS 5740. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.</p>
+    <p>LM-class is an education resource for contemporary language modeling, broadly construed. The materials were developed for Cornell CS 5740 Natural Language Processing, and were first used in <a href="https://courses.cs.cornell.edu/cs5740/2024sp/">Spring 2024</a>. This class constituted a significant revision of CS 5740. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.</p>
   </div>
   <div class="col col-lg-4 col-12 ">
     <img src="img/lm-llama-book.jpg" class="rounded img-fluid" alt="Responsive image">
@@ -19,9 +19,9 @@ title: LM-class
 
 <p>The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.</p>
 
-<p>LM-class was created by [Yoav Artzi](https://yoavartzi.com/). Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct.</p>
+<p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct.</p>
 
-<p>The materials are distributed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license, and we hope they will find broad and diverse use.</p>
+<p>The materials are distributed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license, and we hope they will find broad and diverse use.</p>
 
 ## Lectures
 
