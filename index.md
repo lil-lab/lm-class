@@ -33,7 +33,7 @@ The [lectures](lectures) are organized into three sections:
 
 ## Assignments
 
-The class includes four assignments. The assignments are available upon request. The assignments were developed by [Anne Wu](https://annshin.github.io/) and [Omer Gul](https://momergul.github.io/).
+The class includes four assignments. The assignments are available upon request (i.e., just email [Yoav](https://yoavartzi.com/)). The assignments were developed by [Anne Wu](https://annshin.github.io/) and [Omer Gul](https://momergul.github.io/).
 
 Each assignment includes instructions, report template, starter repository, code to manage a leader board, and a grading schema. The assignments emphasize building, and provide only basic starter code. Each assignment is designed to compare and contrast different approaches. The assignments are complementary to the class material, and require significant amount of self-learning and exploration.
 
