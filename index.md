@@ -59,7 +59,9 @@ The focus of this assignment are self-supervised representations. The students c
 
 The focus of this assignment is supervised sequence prediction. It uses a language-to-SQL code generation task using the ATIS benchmark, with evaluation of both surface-form correctness and database execution. The student implements three approaches to the problem: prompting with an LLM (including ICL), fine-tuning a pretrained encoder-decoder model, and training the same model from scratch. The assignment uses a T5 model that is provided to the students, and training from scratch uses the same model but with randomly initialized parameters.
 
-## Future Plans
+## Issues and Future Plans
+
+LM-class is very much work in progress, with a lot of TODOs. I am maintaining <a href="https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit#heading=h.cdynfr8juu90">a document with issues that I am considering to modify or fix</a>, and plan to revisit many of them in the next revision. Feel free to leave comments there.
 
 There are several topics not covered by the current version of the lectures, and that are on the planning board to potentially be added in the future:
 
