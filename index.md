@@ -21,9 +21,6 @@ order: 0
   </div>
 </div>
 
-
-
-
 ## Issues and Future Plans
 
 LM-class is very much work in progress, with a lot of TODOs. I am maintaining <a href="https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit#heading=h.cdynfr8juu90">a document with issues that I am considering to modify or fix</a>, and plan to revisit many of them in the next revision. Feel free to leave comments there.
