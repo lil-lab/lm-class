@@ -1,0 +1,14 @@
+numpy==1.26.0
+torch==2.1.2
+pandas==2.1.4
+evaluate==0.4.0
+jiwer==3.0.3
+chardet==5.2.0
+tokenizers==0.13.3
+tqdm==4.66.1
+pytest==7.4.4
+hypothesis==6.96.1
+wandb==0.15.10
+matplotlib==3.8.0
+plotly==5.18.0
+seaborn==0.13.2
