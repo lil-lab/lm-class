@@ -7,12 +7,7 @@ title: Lectures
 order: 10
 ---
 
-The lectures constitute a coherent sequence, where later sections often assume concepts and material from earlier sections. They are organized into three sections:
-
-1. Warming up: this section quickly brings the students up to speed with the basics. The goal is to prepare the students for the first assignment. Beyond a quick introduction, it includes: data basics, linear perceptron, and multi-layer perceptron.
-1. Learning with raw data: this section focuses on representation learning from raw data (i.e., without any annotation or user labor). It is divided into three major parts: word embeddings, next-word-prediction language modeling, and masked language modeling. Through these subsections we introduce many of the fundamental technical concepts and methods of the field.
-1. Learning with annotated data: this section focuses on learning with annotated data. It introduces the task as a framework to structure solution development, through the review of several prototypical NLP tasks. For each task, we discuss the problem, data, modeling decisions, and formulate a technical approach to address it. This section takes a broad view of annotated data, including covering language model alignment using annotated data (i.e., instruction tuning and RLHF).
-
+The lectures constitute a coherent sequence, where later sections often assume concepts and material from earlier sections. They are organized into three sections main sections: warming up, learning with raw data, and learning with annotated data. 
 
 I am collecting a [document of issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material. I did not review the issue document in depth, so cannot stand by it. However, I plan to review it and address issues in the next iteration of the class (usually: next spring). 
 
