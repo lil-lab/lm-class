@@ -37,7 +37,7 @@ plugins:
 exclude:
   - assignments/
   - Gemfile.lock
-  - _posts/
+  - vendor/bundle/ruby/3.1.0/gems/jekyll-3.9.5/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
