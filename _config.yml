@@ -29,15 +29,14 @@ external_links:
 # Build settings
 markdown: kramdown
 theme: minima
-plugins:
-  - jekyll-feed
+# plugins:
+#  - jekyll-feed
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
 exclude:
   - assignments/
-  - Gemfile.lock
-  - vendor/bundle/ruby/3.1.0/gems/jekyll-3.9.5/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb
+  # - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
