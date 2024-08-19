@@ -7,9 +7,11 @@ title: Lectures
 order: 10
 ---
 
-The lectures constitute a coherent sequence, where later sections often assume concepts and material from earlier sections. They are organized into three sections main sections: warming up, learning with raw data, and learning with annotated data. 
+The lectures constitute a coherent sequence, where later sections often assume concepts and material from earlier sections. They are organized into three sections main sections: warming up, learning with raw data, and learning with annotated data.
 
-I am maintaining a [document of issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material. I did not review the issue document in depth, so cannot stand by it. However, I plan to review it and address issues in the next iteration of the class (usually: next spring). 
+I am maintaining a [document of issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material. I did not review the issue document in depth, so cannot stand by it. However, I plan to review it and address issues in the next iteration of the class (usually: next spring).
+
+Want to grab all the lecture content at once? Just grab the GitHub [repository](https://github.com/lil-lab/lm-class/tree/main/lectures).
 
 ## Warming Up
 
