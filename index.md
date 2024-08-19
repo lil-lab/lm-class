@@ -11,9 +11,9 @@ order: 0
 
 <div class="row">
   <div class="col col-xl-8 col-lg-6 col-md-12 col-sm-12 col-12">
-    <p>LM-class is an education resource for contemporary language modeling, broadly construed. The materials were developed for Cornell CS 5740 Natural Language Processing, and were first used in <a href="https://courses.cs.cornell.edu/cs5740/2024sp/">Spring 2024</a>. This class constituted a significant revision of CS 5740. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.</p>
+    <p>LM-class is an introduction-level education resource for contemporary language modeling, broadly construed. It relies on prior understanding of machine learning and neural networks at the introduction level, as well as undergraduate-level programming, probability theory, and linear algebra. The target audience of the class is MEng/MS graduate students. The material is likely also appropriate for senior undergraduates. While the technical material is a good fit for PhDs and researchers, this class does not focus on research, and is designed primarily for practitioners.</p>
     <p>The materials include <a href="/lectures">lectures</a> and <a href="/assignments">assignments</a>. The class emphasizes technical depth rather than coverage. It does not aim to provide a broad overview of everything that is happening in the field. The objective is to give students a strong base and the tools to expand their knowledge and update it on their own.</p>
-    <p>LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>, <a href="https://annshin.github.io/">Anne Wu</a>, and <a href="https://momergul.github.io/">Omer Gul</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct. Acknowledgements are listed <a href="#acknowledgements">below</a>.</p>
+    <p>The materials were developed for Cornell CS 5740 Natural Language Processing, and were first used in <a href="https://courses.cs.cornell.edu/cs5740/2024sp/">Spring 2024</a>. This class constituted a significant revision of CS 5740. LM-class was created by <a href="https://yoavartzi.com/">Yoav Artzi</a>, <a href="https://annshin.github.io/">Anne Wu</a>, and <a href="https://momergul.github.io/">Omer Gul</a>. Much of the material was adapted or inspired by existing NLP classes. Each lecture and assignment includes a slide at the end with acknowledgements. If I missed any attribution, I am really sorry. Please let me know, so I can correct. Acknowledgements are listed <a href="#acknowledgements">below</a>.</p>
     <p>The materials are distributed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license, and we hope they will find broad and diverse use.</p>
   </div>
   <div class="col col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -38,6 +38,10 @@ I am also considering adding a PyTorch tutorial, with focus on:
 2. Handling data
 3. Conducting parameter sweeps
 4. Basic debugging techniques
+
+## Beyond LM-class
+
+LM-class is a considerable revamp of how I teach language modeling and NLP. I am still trying to figure out how it integrates into a broader curriculum, beyond the prerequisites listed above. Currently, the most attractive next step in the sequence where LM-class is the first step is [Stanford's CS 336 Language Modeling from Scratch](https://stanford-cs336.github.io/), which was designed by [Tatsunori Hashimoto](https://thashim.github.io/) and [Percy Liang](https://cs.stanford.edu/~pliang/). CS 336 offers an advanced deep technical dive into training a contemporary language model from scratch.
 
 ## Acknowledgements
 
