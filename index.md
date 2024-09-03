@@ -31,6 +31,7 @@ There are several topics not covered by the current version of the lectures, and
 2. Approximate fine tuning and inference (e.g., LoRA, QLoRA)
 3. State space models (SSMs)
 4. RNNs and CNNs
+5. Arena-style LLM evaluation
 
 I am also considering adding a PyTorch tutorial, with focus on:
 
