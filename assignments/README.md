@@ -6,7 +6,7 @@
 
 ### How to create the assignment in Github Classroom, the assignment template repo and the autograding pipeline?
 
-You can refer to the file on [Setting up autograding in GitHub Classroom](https://github.com/lil-lab/cs5740-assignments/blob/master/scripts/github_autograding.md).
+You can refer to the file on [Setting up autograding in GitHub Classroom](./scripts/github_autograding.md).
 
 ### How to set the leaderbaord?
 
