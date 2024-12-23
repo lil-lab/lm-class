@@ -10,7 +10,7 @@ You can refer to the file on [Setting up autograding in GitHub Classroom](./scri
 
 ### How to set the leaderbaord?
 
-You can refer to the file on [Setting a cronjob for the leaderboard](https://github.com/lil-lab/cs5740-assignments/blob/master/leaderboard/how_to_automatize_leaderboard_updates.md).
+You can refer to the file on [Setting a cronjob for the leaderboard](./leaderboard/how_to_automatize_leaderboard_updates.md).
 
 ## Grading
 
