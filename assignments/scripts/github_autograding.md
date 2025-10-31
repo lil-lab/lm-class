@@ -37,7 +37,7 @@ Examples for A1, 2024:
 
 Autograding tests:
 
-![Autograding tests](media/autograding_tests_A1_2024.png)
+![Autograding tests](media/autograding_tests_A1_2025.png)
 
 Detailed test setup for MLP:
 
