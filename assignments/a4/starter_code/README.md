@@ -1,4 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/bV_AQ86u)
 # Assignment 4
 
 ## Environment
@@ -14,25 +13,30 @@ python -m pip install -r requirements.txt
 
 ## Evaluation commands
 
-If you have saved predicted SQL queries and associated database records, you can compute F1 scores using:
+To generate word pair similarity scores using the embeddings:
+```
+python similarity.py > prediction.csv
+  --embedding1 results/embedding_file_words1.txt
+  --embedding2 results/embedding_file_words2.txt
+  --words data/contextual_similarity/contextual_dev_x.csv
+```
+
+To evaluate the word pair similarity scores against human ratings:
 ```
 python evaluate.py
-  --predicted_sql results/t5_ft_dev.sql
-  --predicted_records records/t5_ft_dev.pkl
-  --development_sql data/dev.sql
-  --development_records records/ground_truth_dev.pkl
+  --predicted prediction.csv
+  --development data/contextual_similarity/contextual_dev_y.csv
 ```
+
 
 ## Submission
 
-You need to submit your test SQL queries and their associated SQL records. Please only submit your final files corresponding to the test set.
+You need to submit your test embedding files. 
+Please only submit the embeddings corresponding to the test data, as the embeddings can be quite large.
 
-For SQL queries, ensure that the name of the submission files (in the `results/` subfolder) are:
-- `{t5_ft, ft_scr, gemma}_test.sql`
+Ensure that the name of the submission files (in the `results/` subfolder) are:
 
-For database records, ensure that the name of the submission files (in the `records/` subfolder) are:
-- `{t5_ft, ft_scr, gemma}_test.pkl`
+- `{word2vec,bert,gpt2}_cont_test_words{1,2}_embeddings.txt` (for the word pairs in context)
+- `{word2vec,bert,gpt2}_isol_test_words{1,2}_embeddings.txt` (for the word pairs in isolation)
 
-Note that the predictions in each line of the .sql file or in each index of the list within the .pkl file must match each natural language query in 'data/test.nl' in the order they appear.
-
-For the LLM, even if you experimented with both models, you should submit only one `.sql` file and one `.pkl` file, corresponding to the model of your choice. Do not submit separate result files for each model.
+Note that the order of lines in the `.txt` files need to be the same as the order in the data files (e.g. `contextual_test_x.csv`).

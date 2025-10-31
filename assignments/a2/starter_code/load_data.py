@@ -1,26 +1,20 @@
 import os
-import random
+from typing import Optional
+import pandas as pd
 
-import torch
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset, DataLoader
+from transformers import AutoTokenizer
 
-import re
-from tokenizers import Tokenizer
-
-from typing import List, Any, Tuple
-
-def load_data(tokenization_level: str, model_type: str):
+def load_data_word2vec(use_additional_data: Optional[bool] = False):
     """
-    Function for loading data for language modeling and WER computation. You
-    may modify the function header and outputs as necessary.
+    Function for loading data for training or using vector representations 
+    (or embeddings) of words, for word2vec.
+    You may modify the function header and outputs as necessary.
+
+    You can create dedicated Dataset and DataLoader to process the data.
 
     Inputs:
-        tokenization_level (str): The level at which to tokenize the input
-        model_type (str): n_gram or transformer
+        use_additional_data (bool): Whether to use additional data for training
     """
     # TODO
-    return [], [], [], [], [], []
-
-
-
-        
+    return [], [], [], []

@@ -1,8 +1,93 @@
 # Changelog
 
-## [2024.1beta] - 2025-02-24
+## [2025.1] - 2025
 
-### Added
+This is not a complete list of changes, but I tried to track changes as much as possible.
+
+- Removed "beta" marker from version
+- Lectures
+  - Added version info to title slide for each deck
+  - 01 - Introduction
+    - Minor updates
+    - Procedural clarifications specific to the Cornell instance of the course
+  - 02 - data basics and perceptron:
+    - Discuss complexity and implementation
+  - 03 - neural networks
+    - Discuss trade-offs of vocab size
+    - Examples for vocab size
+    - Sanity checks: fit an example, fit a minibatch, then train
+    - Look at initial loss
+    - Stopping criteria with patience — show patience pseudocode
+    - Tracking stats during learning: validation loss, training loss — and how they should look like
+    - Padding for batching with MLP
+    - Discuss trade-offs of max length
+  - 04 - word embeddings
+    - Refresh word senses visuals
+    - Add word2vec pseudocode
+  - 05 - language models
+    - Discuss implementation considerations
+    - Add in-class Shannon Game
+    - Discuss smoothing trade-offs
+    - Improve discussion of WWII code breaking
+  - 06 - tokenization
+    - Revise BPE pseudoode to explicitly target vocabulary size
+    - Add BPE in-class worksheet
+  - 07 - neural lms and transformers
+    - Add slide on dropout in transfromers
+    - Visualize attention mask
+    - Add slide on computing multiple attention head with a single projection
+    - Small fixes to Transformer architecture to be in line with original design
+  - 08 - decoding llms
+    - Add explicit sampling pseudocode
+  - 09 scaling up to llms
+    - Slides about concrete parameter counts in Transformers
+    - Examples from model families
+    - Discuss stages of LLM training (details later on)
+  - 10 masked lms
+    - Refined Transformer architecture presentation
+    - Add BERT usage best practices
+  - 11 encdec pretrain
+    - Improve Transformer architecture presentation
+    - Moved enc-dec instruction to here
+  - 13 tasks
+    - Refine introduction of the task framework
+    - Add BERT best practices reminder
+    - Add formal notation to presentation of modeling instantiations of tasks
+    - Moved enc-dec architecture to earlier lecture
+  - 14 post-training llms
+    - Rename aligning -> post-training
+    - Add iterative post-training
+    - Add targeted LLM fine-tuning
+    - Minor tweaks throughout
+  - 15 prompting
+    - Minor tweaks
+- Assignments
+  - Adopt suffix notation of tensors throughout in starter code
+  - Significant improvement throughout -- list below is under-specified
+  - Assignment 1
+    - Improve starter code
+    - Add milestone
+    - Clarify expected runtimes
+  - Assignment 2
+    - Split Assignment 3 to create a word2vec-only A2
+    - Create report template and assignment PDF
+    - Create starter code and unit tests
+  - Assignment 3
+    - Rename Spring 2024 Assignment 2 to Assignment 3
+    - Starter code improvements
+    - Switch to templated report
+    - Small improvements in assignment PDF
+    - Create unit tests and improve starter code
+  - Assignment 4
+    - Move the second part of Spring 2024 Assignment 3 to 4
+    - Revise the assignment PDF to not include parts moved to A2
+    - Revise the assignment report template
+    - Improve starter code
+  - Assignment 5
+    - Move Spring 2024 Assignment 4 to 5
+    - Improve starter code
+
+## [2024.1beta] - 2025-02-24
 
 - Added a changelog file.
 - Marking version of initial release from Spring 2024 class.

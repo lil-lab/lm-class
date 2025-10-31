@@ -1,8 +1,6 @@
 # Assignment 2
 
-## Example commands
-
-### Environment
+## Environment
 
 It's highly recommended to use a virtual environment (e.g. conda, venv) for this assignment.
 
@@ -13,27 +11,31 @@ conda activate env_name
 python -m pip install -r requirements.txt
 ```
 
-### Train and predict commands
+## Evaluation commands
 
-Example commands (subject to change, just for inspiration):
+To generate word pair similarity scores using the embeddings:
 ```
-python n_gram.py --n=3 --experiment_name=trigram --num_samples=100
-python transformer.py --num_layers=4 --hidden_dim=256 --experiment_name=transformer
-```
-
-### Commands to run unittests
-
-Ensure that your code passes the unittests before submitting it.
-The commands can be run from the root directory of the project.
-```
-pytest tests/test_n_gram.py
-pytest tests/test_transformer.py
+python similarity.py > prediction.csv
+  --embedding1 results/embedding_file_words1.txt
+  --embedding2 results/embedding_file_words2.txt
+  --words data/isolated_similarity/isolated_dev_x.csv
 ```
 
-### Submission
+To evaluate the word pair similarity scores against human ratings:
+```
+python evaluate.py
+  --predicted prediction.csv
+  --development data/isolated_similarity/isolated_dev_y.csv
+```
+
+
+## Submission
+
+You need to submit your test embedding files. 
+Please only submit the embeddings corresponding to the test data, as the embeddings can be quite large.
 
 Ensure that the name of the submission files (in the `results/` subfolder) are:
 
-- `subword_n_gram_test_wer_predictions.csv`
-- `character_n_gram_test_wer_predictions.csv`
-- `transformer_test_wer_predictions.csv`
+- `word2vec_isol_test_words{1,2}_embeddings.txt`
+
+Note that the order of lines in the `.txt` files need to be the same as the order in the data file (`isolated_test_x.csv`).

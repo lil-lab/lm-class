@@ -1,68 +1,91 @@
-""" Perceptron model for Assignment 1: Starter code.
+"""Perceptron model model for Assignment 1: Starter code.
 
-You can change this code while keeping the function headers.
+You can change this code while keeping the function giving headers. You can add any functions that will help you. The given function headers are used for testing the code, so changing them will fail testing.
 """
-import os
-import sys
+
 import argparse
-from typing import Dict, List
+import json
+import os
+from collections import defaultdict
+from dataclasses import dataclass
+from typing import Dict, List, Set
 
-from util import evaluate, load_data
+from features import make_featurize
+from tqdm import tqdm
+from utils import DataPoint, DataType, accuracy, load_data, save_results
 
 
-class PerceptronModel():
-    """ Perceptron model for classification.
-    """
-    def __init__(self, num_features: int, num_classes: int):
-        """ Initializes the model.
+@dataclass(frozen=True)
+class DataPointWithFeatures(DataPoint):
+    features: Dict[str, float]
+
+
+def featurize_data(
+    data: List[DataPoint], feature_types: Set[str]
+) -> List[DataPointWithFeatures]:
+    """Add features to each datapoint based on feature types"""
+    # TODO: Implement this!
+    raise NotImplementedError
+
+
+class PerceptronModel:
+    """Perceptron model for classification."""
+
+    def __init__(self):
+        self.weights: Dict[str, float] = defaultdict(float)
+        self.labels: Set[str] = set()
+
+    def _get_weight_key(self, feature: str, label: str) -> str:
+        """An internal hash function to build keys of self.weights (needed for tests)"""
+        return feature + "#" + str(label)
+
+    def score(self, datapoint: DataPointWithFeatures, label: str) -> float:
+        """Compute the score of a class given the input.
 
         Inputs:
-            num_features (int): The number of features.
-            num_classes (int): The number of classes.
-        """
-        # TODO: Implement initialization of this model.
-        self.weights: Dict[int, Dict[int, float]] = {}
-        pass
-    
-    def score(self, model_input: Dict, class_id: int):
-        """ Compute the score of a class given the input.
+            datapoint (Datapoint): a single datapoint with features populated
+            label (str): label
 
-        Inputs:
-            model_input (features): Input data for an example
-            class_id (int): Class id.
-        
         Returns:
             The output score.
         """
-        # TODO: Implement scoring function.
-        pass
+        # TODO: Implement this! Expected # of lines: <10
+        raise NotImplementedError
 
-    def predict(self, model_input: Dict) -> int:
-        """ Predicts a label for an input.
+    def predict(self, datapoint: DataPointWithFeatures) -> str:
+        """Predicts a label for an input.
 
         Inputs:
-            model_input (features): Input data for an example
+            datapoint: Input data point.
 
         Returns:
-            The predicted class.    
+            The predicted class.
         """
-        # TODO: Implement prediction for an input.
-        return None
-    
-    def update_parameters(self, model_input: Dict, prediction: int, target: int, lr: float) -> None:
-        """ Update the model weights of the model using the perceptron update rule.
+        # TODO: Implement this! Expected # of lines: <5
+        raise NotImplementedError
+
+    def update_parameters(
+        self, datapoint: DataPointWithFeatures, prediction: str, lr: float
+    ) -> None:
+        """Update the model weights of the model using the perceptron update rule.
 
         Inputs:
-            model_input (features): Input data for an example
+            datapoint: The input example, including its label.
             prediction: The predicted label.
-            target: The true label.
             lr: Learning rate.
         """
-        # TODO: Implement the parameter updates.
-        pass
+        # TODO: Implement this! Expected # of lines: <10
+        raise NotImplementedError
 
-    def learn(self, training_data, val_data, num_epochs, lr) -> None:
-        """ Perceptron model training.
+    def train(
+        self,
+        training_data: List[DataPointWithFeatures],
+        val_data: List[DataPointWithFeatures],
+        num_epochs: int,
+        lr: float,
+    ) -> None:
+        """Perceptron model training. Updates self.weights and self.labels
+        We greedily learn about new labels.
 
         Inputs:
             training_data: Suggested type is (list of tuple), where each item can be
@@ -71,39 +94,92 @@ class PerceptronModel():
             num_epochs: Number of training epochs.
             lr: Learning rate.
         """
-        # TODO: Implement the training of this model.
-        pass
+        # TODO: Implement this!
+        raise NotImplementedError
+
+    def save_weights(self, path: str) -> None:
+        with open(path, "w") as f:
+            f.write(json.dumps(self.weights, indent=2, sort_keys=True))
+        print(f"Model weights saved to {path}")
+
+    def evaluate(
+        self,
+        data: List[DataPointWithFeatures],
+        save_path: str = None,
+    ) -> float:
+        """Evaluates the model on the given data.
+
+        Inputs:
+            data (list of Datapoint): The data to evaluate on.
+            save_path: The path to save the predictions.
+
+        Returns:
+            accuracy (float): The accuracy of the model on the data.
+        """
+        # TODO: Implement this!
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Perceptron model')
-    parser.add_argument('-d', '--data', type=str, default='sst2',
-                        help='Dataset')
-    parser.add_argument('-f', '--features', type=str, default='feature_name', help='Feature type')
-    parser.add_argument('-m', '--model', type=str, default='perceptron', help='Model type')
+    parser = argparse.ArgumentParser(description="Perceptron model")
+    parser.add_argument(
+        "-d",
+        "--data",
+        type=str,
+        default="sst2",
+        help="Data source, one of ('sst2', 'newsgroups')",
+    )
+    parser.add_argument(
+        "-f",
+        "--features",
+        type=str,
+        default="bow",
+        help="Feature type, e.g., bow+len",
+    )
+    parser.add_argument(
+        "-e", "--epochs", type=int, default=3, help="Number of epochs"
+    )
+    parser.add_argument(
+        "-l", "--learning_rate", type=float, default=0.1, help="Learning rate"
+    )
     args = parser.parse_args()
 
-    data_type = args.data
-    feature_type = args.features
-    model_type = args.model
+    data_type = DataType(args.data)
+    feature_types: Set[str] = set(args.features.split("+"))
+    num_epochs: int = args.epochs
+    lr: float = args.learning_rate
 
-    train_data, val_data, dev_data, test_data = load_data(data_type, feature_type, model_type)
+    train_data, val_data, dev_data, test_data = load_data(data_type)
+    train_data = featurize_data(train_data, feature_types)
+    val_data = featurize_data(val_data, feature_types)
+    dev_data = featurize_data(dev_data, feature_types)
+    test_data = featurize_data(test_data, feature_types)
 
-    # Train the model using the training data.
     model = PerceptronModel()
-
     print("Training the model...")
-    # Note: ensure you have all the inputs to the arguments.
-    model.learn(train_data, val_data, num_epochs, lr)
+    model.train(train_data, val_data, num_epochs, lr)
 
-    # Predict on the development set. 
-    dev_accuracy = evaluate(model,
-                            dev_data,
-                            os.path.join("results", f"perceptron_{data_type}_{feature_type}_dev_predictions.csv"))
+    # Predict on the development set.
+    dev_acc = model.evaluate(
+        dev_data,
+        save_path=os.path.join(
+            "results",
+            f"perceptron_{args.data}_{args.features}_dev_predictions.csv",
+        ),
+    )
+    print(f"Development accuracy: {100 * dev_acc:.2f}%")
 
-    # Predict on the test set.
-    # Note: We don't provide labels for test, so the returned value from this
-    # call shouldn't make sense.
-    evaluate(model,
-             test_data,
-             os.path.join("results", f"perceptron_{data_type}_{feature_type}_test_predictions.csv"))
+    # Predict on the test set
+    _ = model.evaluate(
+        test_data,
+        save_path=os.path.join(
+            "results",
+            f"perceptron_{args.data}_test_predictions.csv",
+        ),
+    )
+
+    model.save_weights(
+        os.path.join(
+            "results", f"perceptron_{args.data}_{args.features}_model.json"
+        )
+    )

@@ -1,8 +1,10 @@
 numpy==1.26.0
 torch==2.1.2
-tokenizers==0.19.1
-transformers==4.40.0
-accelerate==0.29.3
+pandas==2.1.4
+tokenizers==0.15.2
+transformers==4.38.2
+conllu==4.5.3
+scipy==1.12.0
 nltk==3.8.1
 tqdm==4.66.1
 pytest==7.4.4
@@ -11,5 +13,3 @@ wandb==0.15.10
 matplotlib==3.8.0
 plotly==5.18.0
 seaborn==0.13.2
-bitsandbytes==0.43.1
-sentencepiece==0.2.0
