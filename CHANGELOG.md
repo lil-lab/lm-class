@@ -1,5 +1,10 @@
 # Changelog
 
+## [2025.2] - 2025-10-31
+
+- Added a slide to the neural networks deck (#3) about GPU speeds up not always showing
+- Several small tune-ups to the assignments following issues that came up in 2025
+
 ## [2025.1] - 2025
 
 This is not a complete list of changes, but I tried to track changes as much as possible.
