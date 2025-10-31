@@ -1,131 +1,80 @@
-Assignment 2 Rubric
+Assignment 3 Rubric
 ===================
 
-[3pt] Section 1: Introduction
------------------------------
-* -0.4pt per
-  * Missing the LM task (evaluated with perplexity)
-  * Missing the ASR transcription reranking task (evaluated with WER)
-  * Does not specify LM task evaluated on WSJ data
-  * Does not specify reranking task evaluated on HUB data (can revisit)
-* -1.5 per
-  * No paragraph summarizing data and tasks
-  * No paragraph summarizing main experiments and results
+Section 1: word2vec training (20 pt)
+-----------------------------------
+* Applicable for both Table 1 and 2
+  * For Row 1 and Row 7: 
+    * -2.5 per
+      * No or invalid entry / description
+  * For Row 2-6:
+    * -3 per
+        * No or invalid entry / description
+  * For “Context construction”
+    * -1 per
+      * No description of how the context is constructed
+      * Not specifying the context window size
+  * For “Negative sampling”
+    * -1 per
+      * Not specifying the distribution from which the negative samples are sampled
+      * Not specifying how many negative examples are used per context-word pair
+  * For “Dataset construction”
+    * -1per
+      * Not specifying which dataset (i.e. 1M sentences or the extended) is used
+      * If used the extended dataset: not specifying how many sentences were sampled or how
+      * Not specifying the final dataset’s size (for the 1M case, it’s ok if the student just said that they’re using the base dataset with 1M sentences)
+  * For “Data preprocessing”
+    * -1 per (up to -3)
+      * Not specifying how casing is handled
+      * Not specifying how tokenization is handled
+      * Not specifying how unknown words are handled
+      * Unknown word handling doesn’t make sense
+  * For “Training hyperparameters”
+    * -3 per
+      * No or invalid description
+    * -1 per
+      * Partially invalid or wrong description
+      * Stopping criterion being just a predefined number of epochs and no explanation
 
-[11pt] Section 2: Data
-----------------------
 
-### [3pt] Data
-* -0.3 per
-  * Missing number of examples for one split (the “missing stats” refers to the number of examples here)
-    * WSJ: train/dev/test
-  * Not reporting word-level statistics
-    * In particular: check that the students didn’t use character-level sentence length (a sentence length of ~120+ is probably char-level)
-* -0.25 per (only WSJ)
-  * Not specifying the vocabulary size
-  * Not specifying the sentence/doc length
-  * Not specifying how they computed a statistics that can be computed in different ways (vocabulary size)
-    * Note: it’s ok if they at least said something like “number of unique lowercase words” or similar. It’s not enough if it’s just “word-level”, because we could have different results depending on if it’s unique/casing
 
-### [8pt] Preprocessing, Tokenization, Handling unknowns
-* -1 per
-  * No description of preprocessing (casing)
-  * No description of preprocessing (tokenization)
-  * No statistics after preprocessing (e.g. sentence length, vocabulary size)
-* -0.5 per 
-  * If used a subset of the data, no explanation of why
-  * If used a subset of the data, no discussion of the tradeoffs
-  * If used a subset of the data, the explanations are not backed by experiments
-  * If they did not mention thresholding for unknown words  
-  * If the exact tokenizer they used is ambiguous 
-* -1.5 per
-  * No discussion of how unknown words are handled
-* -1 per
-  * Clearly wrong/invalid ways of handling of unknown words
-  * No discussion of the trade-offs in handling the unknown words
+Section 2: Results (20 pt)
+------------------------------------------------
+* Result table
+  * -1 per
+    * Test result on the leaderboard is lower than the test score on the report (don’t deduct points if the leaderboard score is higher.)
+    * Test result shown instead of dev result in the dev result section
+    * Not reporting the right results (e.g. exactly the same test and dev results)
+  * -1
+    * Description of variant vague or hard to understand (it’s ok if they specified in the caption)
+* Word2vec:
+  * Number of variants (at least 3 experiments from the provided list are required, i.e. training data size, embedding dimension, context window size, number of negative sample)
+    * -10 if experimented with only one of the choices
+    * -5 if experimented with only two of the choices
+    * -15 if not experimenting with required choices
+  * Only for isolated word pairs (Table 7)
+    * -3 if final model test score much better than dev score (e.g. ~3x than dev score, with test score >0.3)
+* Plot
+  * -5 for no plot
+  * -1 per
+    * No figure caption
+    * Missing or vague axis labels (e.g. when the x-axis is “step”, but no specification of whether one step is an epoch, a minibatch or else)
 
-[12pt] Section 3: Models
-------------------------
-* -1.5pt per 
-  * If the student makes no reference to the smoothing techniques they tried
-  * If the student makes no reference to the tokenization strategies they tried for the subword-level model.
-* -1pt per
-  * If the n-gram objective is not described (maximizing corpus probability, cf. slide 24)
-  * If the n-gram MLE solution is not described (cf. slide 28)
-  * If the transformer function is not described (they can abstract away the function, but we at least expect the prediction head in notation form)
-  * If the transformer objective is not described (the cross entropy loss)
-* -0.5pt per
-  * If the n-gram objective is partially incorrect or verbally described
-  * If the n-gram MLE description is partially incorrect or verbally described
-  * If the Transformer function is incorrectly or verbally described
-  * If the Transformer’s objective is incorrectly or verbally described (the cross entropy loss)
-* -1pt per:
-  * If the notation in the section is poor enough to make the content difficult to understand
 
-[4pt] Section 4: Implementation Details
----------------------------------------
-* -1pt per:
-  * If they did not describe what the tunable hyperparameters for the character-level model were (smoothing techniques; n-gram values)
-  * If they did not describe what the tunable hyperparameters for the word-level model were (smoothing techniques; n-gram values; tokenization)
-  * If they did not describe what the tunable hyperparameters for the transformer were. At least 2 of: number of layers, hidden dimension, number of heads, learning rate
-  * If these were mentioned in the following section, no need to cut points.
 
-[8pt] Section 5: Experiments
-----------------------------
-* -1pt per (treat character- and word-level n-grams independently):
-  * No experiments performed for n=1,2 and 3
-  * No experiments performed comparing word-level to BPE tokenization (word-level only)
-* -0.5 once
-  * If the student does not make comparisons between smoothing and no smoothing
-  * If the student did not use linear interpolation or backoff for smoothing experiments
-* -0.25 once
-  * If the student did not ever use linear interpolation, but used backoff instead.
-* -1.5pt
-  * If students varied less than 2 hyperparameters for transformers. The set of hyperparameters includes but is not limited to: number of layers, hidden dimension, number of heads, learning rate
-* -1pt per (clarity issue):
-  * If we cannot reproduce their exact experiments for character- and word-level n-grams (i.e. they didn’t specify the hyperparameter settings)
-  * If we cannot reproduce their exact experiments for transformers
+Milestone (6pt)
+---------------
+* -3 if between 0.08 and 0
+* -6 if below 0
 
-[20pt] Section 6: Results and Analysis
---------------------------------------
-* -2 per:
-  * Missing entry in dev for the best model (per system - character-level n-gram, word-level n-gram, transformer)
-  * Missing entry in dev for a model variant specified
-  * Missing test results or reports non-final results (compared to leaderboard) on test set
-  * If the students were penalized for missing an entry in dev for the best model, do not double penalize for missing an entry in dev for a variant.
-* -1 per system (character-level n-gram, word-level n-gram, transformer):
-  * Unclear/invalid model variant
-* -1 per not discussing or invalid discussion of contrasting choice for: 
-  * WSJ
-    * N-gram
-      * Smoothing
-        * Within-system comparison for transformer (can choose not to cut points if the trends are clear from the table)
-  * HUB
-    * N-gram
-    * Tokenization
-    * Smoothing
-    * Neural vs. n-gram
-* -1 once
-  * If discussion results don’t match what’s on the table
-* -3 per
-  * System missing entirely from discussion (would not be applying -1per above for that system) (can revisit the score)
-
-[3pt] Section 7: Conclusion
----------------------------
-* -3 if no conclusion
-* -1 pt:
-  * No summative statement comparing overall systems
-
-[10pt] Autograding
-------------------
-* Directly taking the points from Github Classroom (5 unittests, 2pt/unittest)
-
-[24pt] Performance
-------------------
+Performance grading (44pt)
+--------------------------
 * Following equation in assignment PDF
+* Can be more than 44pt (allow bonus points)
 
 
-[5pt] Performance milestone
----------------------------
-* -5pt if:
-  * The performance on the leaderboard at 12:00am Mar 11 (deadline was: 11:59pm Mar 10) is > 13.3% WER
+
+### Late Penalty
+
+* TBD
+

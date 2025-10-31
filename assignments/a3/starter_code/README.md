@@ -1,6 +1,8 @@
-# Assignment 3
+# Assignment 2
 
-## Environment
+## Example commands
+
+### Environment
 
 It's highly recommended to use a virtual environment (e.g. conda, venv) for this assignment.
 
@@ -11,32 +13,27 @@ conda activate env_name
 python -m pip install -r requirements.txt
 ```
 
-## Evaluation commands
+### Train and predict commands
 
-To generate word pair similarity scores using the embeddings:
+Example commands (subject to change, just for inspiration):
 ```
-python similarity.py > prediction.csv
-  --embedding1 results/embedding_file_words1.txt
-  --embedding2 results/embedding_file_words2.txt
-  --words data/contextual_similarity/contextual_dev_x.csv
+python n_gram.py --n=3 --experiment_name=trigram --num_samples=100
+python transformer.py --num_layers=4 --hidden_dim=256 --experiment_name=transformer
 ```
 
-To evaluate the word pair similarity scores against human ratings:
+### Commands to run unittests
+
+Ensure that your code passes the unittests before submitting it.
+The commands can be run from the root directory of the project.
 ```
-python evaluate.py
-  --predicted prediction.csv
-  --development data/contextual_similarity/contextual_dev_y.csv
+pytest tests/test_n_gram.py
+pytest tests/test_transformer.py
 ```
 
-
-## Submission
-
-You need to submit your test embedding files. 
-Please only submit the embeddings corresponding to the test data, as the embeddings can be quite large.
+### Submission
 
 Ensure that the name of the submission files (in the `results/` subfolder) are:
 
-- `{word2vec,bert,gpt2}_cont_test_words{1,2}_embeddings.txt` (for the word pairs in context)
-- `{word2vec,bert,gpt2}_isol_test_words{1,2}_embeddings.txt` (for the word pairs in isolation)
-
-Note that the order of lines in the `.txt` files need to be the same as the order in the data files (e.g. `contextual_test_x.csv`).
+- `subword_n_gram_test_wer_predictions.csv`
+- `character_n_gram_test_wer_predictions.csv`
+- `transformer_test_wer_predictions.csv`

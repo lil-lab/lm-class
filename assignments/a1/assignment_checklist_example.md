@@ -31,7 +31,7 @@ Code part.
 
 #### Leaderboard
 
-- [ ] install Github CLI, authentificate, install the Classroom extension and clone the student repos (ex: `gh classroom clone student-repos -a xxxxxx`)
+- [ ] install Github CLI, authenticate, install the Classroom extension and clone the student repos (ex: `gh classroom clone student-repos -a xxxxxx`)
 - [ ] install PyGithub (`pip install PyGithub`)
 - [ ] create a `leaderboards` repo with the corresponding assignment subfolder + placeholder blank csvs
 - [ ] running through the corresponding `leaderboard/*.py` and make sure that they update correctly the csvs

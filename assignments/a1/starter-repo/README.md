@@ -1,41 +1,44 @@
-# Assignment 1
+# Commands
 
-## Example commands
+## Virtual environment creation
 
-### Environment
+It's highly recommended to use a virtual environment for this assignment.
 
-It's highly recommended to use a virtual environment (e.g. conda, venv) for this assignment.
+Virtual environment creation (you may also use venv):
 
-Example of virtual environment creation using conda:
-```
-conda create -n env_name python=3.10
-conda activate env_name
+```{sh}
+conda create -n cs5740a1_310 python=3.10
+conda activate cs5740a1_310
 python -m pip install -r requirements.txt
 ```
 
-### Train and predict commands
+## Train and predict commands
 
-Example commands (subject to change, just for inspiration):
+Example command for the original code (subject to change, if additional arguments are added):
+
+```{sh}
+python perceptron.py -d newsgroups -f bow
+python perceptron.py -d sst2 -f bow
+python multilayer_perceptron.py -d newsgroups
 ```
-python perceptron.py -d newsgroups -f feature_name
-python perceptron.py -d sst2 -f feature_name
-python multilayer_perceptron.py -d newsgroups -f feature_name
-```
 
-### Commands to run unittests
+## Commands to run unittests
 
-Ensure that your code passes the unittests before submitting it.
+It's recommended to ensure that your code passes the unittests before submitting it.
 The commands can be run from the root directory of the project.
-```
+
+```{sh}
+pytest
 pytest tests/test_perceptron.py
 pytest tests/test_multilayer_perceptron.py
 ```
 
-### Submission
+Please do NOT commit any code that changes the following files and directories:
 
-Ensure that the name of the submission files (in the `results/` subfolder) are:
+tests/
+.github/
+pytest.ini
 
-- `perceptron_newsgroups_test_predictions.csv`
-- `mlp_newsgroups_test_predictions.csv`
-- `perceptron_sst2_test_predictions.csv`
-- `mlp_sst2_test_predictions.csv`
+Otherwise, your submission may be flagged by GitHub Classroom autograder.
+
+Please DO commit your output labels in results/ following the same name and content format. Our leaderboard periodically pulls your outputs and computes accuracy against hidden test labels. <https://github.com/cornell-cs5740-sp25/leaderboards/>
