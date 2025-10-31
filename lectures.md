@@ -7,9 +7,9 @@ title: Lectures
 order: 10
 ---
 
-The lectures constitute a coherent sequence, where later sections often assume concepts and material from earlier sections. They are organized into three sections main sections: warming up, learning with raw data, and learning with annotated data.
+The lectures constitute a coherent sequence, where later sections assume concepts and material from earlier sections. They are organized into three sections main sections: warming up, learning with raw data, and learning with annotated data.
 
-I am maintaining a [document of issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material. I did not review the issue document in depth, so cannot stand by it. However, I plan to review it and address issues in the next iteration of the class (usually: next spring).
+We are maintaining a [document of open issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material.
 
 Want to grab all the lecture content at once? Just grab the GitHub [repository](https://github.com/lil-lab/lm-class/tree/main/lectures).
 
@@ -42,23 +42,23 @@ This section focuses on representation learning from raw data (i.e., without any
 <dt><strong>Decoding LMs</strong> <a href="/lectures/08%20-%20decoding%20lms.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/08%20-%20decoding%20lms.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>This lecture is a brief discussion of decoding techniques for LMs, mostly focusing on sampling techniques, but also discussing beam search.</dd>
 <dt><strong>Scaling up to LLMs</strong> <a href="/lectures/09%20-%20scaling%20up%20to%20llms.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/09%20-%20scaling%20up%20to%20llms.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
-<dd>We discuss the challenges of scaling LMs to contemporary LLMs, including data challenges, scaling laws, and some of the societal challenges and impacts LLMs bring about. This section focuses on pre-training only.</dd>
+<dd>We discuss the challenges of scaling LMs to contemporary LLMs, including data challenges, scaling laws, and some of the societal challenges and impacts LLMs bring about. The focus of this section is pre-training.</dd>
 <dt><strong>Masked Language Models and BERT</strong> <a href="/lectures/10%20-%20masked%20lms.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/10%20-%20masked%20lms.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>This section introduces BERT and its training. We use this opportunity to introduce the encoder variant of the Transformer.</dd>
 <dt><strong>Pretraining Encoder-decoders</strong> <a href="/lectures/11%20-%20encdec%20pretrain.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/11%20-%20encdec%20pretrain.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
-<dd>This section introduces the BART and T5 models. In the most recent version of the class, it came late in the semester, so it does not define the encoder-decoder Transformer architecture in detail. This content should be migrated from the later tasks slide deck.</dd>
+<dd>This section introduces the BART and T5 models, including defining the encoder-decoder Transformer architecture, putting together previously defined pieces.</dd>
 <dt><strong>Working with Raw Data Recap</strong> <a href="/lectures/12%20-%20raw%20data%20recap.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/12%20-%20raw%20data%20recap.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>A very short recap of the first half of the class.</dd>
 </dl>
 
 ## Learning with Annotated Data
 
-This section focuses on learning with annotated data. It introduces the task as a framework to structure solution development, through the review of several prototypical NLP tasks. For each task, we discuss the problem, data, modeling decisions, and formulate a technical approach to address it. This section takes a broad view of annotated data, including covering language model alignment using annotated data (i.e., instruction tuning and RLHF).
+This section focuses on learning with annotated data. It introduces the task as a framework to structure solution development, through the review of several prototypical NLP tasks. For each task, we discuss the problem, data, modeling decisions, and formulate a technical approach to address it. This section takes a broad view of annotated data, including covering language model post-training using annotated data (i.e., instruction tuning and RLHF).
 
 <dl>
 <dt><strong>Prototypical NLP Tasks</strong> <a href="/lectures/13%20-%20tasks.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/13%20-%20tasks.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>Defining the task as a conceptual way to think about problems in NLP. We discuss several prototypical tasks: named-entity recognition as a tagging problem, extract question answering as span extraction, machine translation as a language generation problem, and code generation as a structured output generation problem. We use these tasks to introduce general modeling techniques and discuss different evaluation techniques and challenges. We conclude with multi-task benchmark suites. This section currently also defines the encoder-decoder Transformer architecture, as part of the machine translation discussion. This content should be migrated earlier to the encoder-decoder pre-training lecture.</dd>
-<dt><strong>Aligning LLMs</strong> <a href="/lectures/14%20-%20aligning%20llms.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/14%20-%20aligning%20llms.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
+<dt><strong>Post-training LLMs</strong> <a href="/lectures/14%20-%20post-training%20llms.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/14%20-%20ost-training%20llms.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>The process of training LLMs past the initial pre-training stage. We discuss instruction tuning and RLHF. We provide a basic introduction to reinforcement learning, including PPO. We also describe DPO.</dd>
 <dt><strong>Working with LLMs: Prompting</strong> <a href="/lectures/15%20-%20prompting.key"><span class="badge text-bg-primary">.key</span></a> <a href="/lectures/15%20-%20prompting.pdf"><span class="badge text-bg-success">.pdf</span></a></dt>
 <dd>This lecture covers the most common prompting techniques, including zero-shot, in-context learning, and chain-of-thought.</dd>
