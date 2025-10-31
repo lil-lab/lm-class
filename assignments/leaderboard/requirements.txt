@@ -1,0 +1,5 @@
+numpy
+pandas
+pygithub
+scikit-learn
+tqdm

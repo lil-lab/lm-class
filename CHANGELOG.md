@@ -4,6 +4,7 @@
 
 - Added a slide to the neural networks deck (#3) about GPU speeds up not always showing
 - Several small tune-ups to the assignments following issues that came up in 2025
+- Add updated leaderboard scripts
 
 ## [2025.1] - 2025
 

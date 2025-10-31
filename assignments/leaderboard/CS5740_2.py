@@ -9,7 +9,8 @@ from tqdm import tqdm
 from github import Github
 from sys import argv
 import argparse
-from IPython import embed
+import numpy as np
+import os
 
 ################################################################################
 # TODO: Configuration.
@@ -17,38 +18,43 @@ from IPython import embed
 
 # argparsing for github token
 parser = argparse.ArgumentParser()
-parser.add_argument('--username', help='GitHub username')
+parser.add_argument('--username', help='GitHub username', default="yilun-hua")
 parser.add_argument('--token', help='Access token for that GitHub username')
+parser.add_argument('--deploy', help='deploy', action='store_true')
+parser.add_argument('--save_to_local', help='whether to save to local', action='store_true')
 args = parser.parse_args()
 
 # Write leaderboards to disk in current directory.
 
-DRY_RUN = (argv[1] == "True")
+DEPLOY = args.deploy
+SAVE_LOCAL = args.save_to_local
+#DRY_RUN = False
 
 # Username / password or access token
 # See: https://github.com/PyGithub/PyGithub#simple-demo
 
-GITHUB_TOKEN = [args.username, args.token]
+GH_USER = os.environ.get("GH_USER") or args.username
+GH_TOKEN = os.environ.get("GH_TOKEN") or args.token
+GITHUB_TOKEN = [GH_USER, GH_TOKEN]
 
 # Organization name for the class.
 
-CLASS = "cornell-cs5740-sp24"
+CLASS = "cornell-cs5740-sp25"
 
 # Exclude these people from collaborator list.
-# TOCHANGE
+
 STAFF = {
     "yoavartzi",
-    "momergul",
-    "annshin",
-    "Vrownie", 
-    "sy464",
-    "YiChen8185",
-    "kanlanc",
+    "GSYfate",
+    "chenzizhao",
+    "evan-wang-13",
+    "shankarp8",
+    "yilun-hua",
 }
 
 # Name of the leaderboard repo.
 
-LEADERBOARD_REPO_NAME = "leaderboards" # TOCHANGE
+LEADERBOARD_REPO_NAME = "leaderboards"
 
 # Assignment directory in leaderboard repo.
 
@@ -56,59 +62,112 @@ LEADERBOARD_ASSIGMENT_NAME = "a2"
 
 # GitHub Classroom prefix attached to every repo, used to find assigments.
 
-REPO_ASSIGNMENT_PREFIX = "cs5740-sp24-assignment-2-"
+REPO_ASSIGNMENT_PREFIX = "a2-new"
 
 ################################################################################
-# TODO: Compute and sort scores.
+# Compute and sort scores.
 ################################################################################
 
-from evaluate import load
-wer = load("wer")
+from scipy.stats import spearmanr
+
+def get_similarity_scores(E1, E2):
+    """
+    From the assignment repo (to use the same computation)
+    Function to compute the similarity scores between two sets of embeddings.
+    """
+    similarity_scores = []
+    for idx in range(len(E1)):
+        sim_score = round(np.dot(E1[idx][1], E2[idx][1]), 6)
+        similarity_scores.append(sim_score)
+    return similarity_scores
+
+def compute_spearman_correlation(similarity_scores, human_scores):
+    """
+    From the assignment repo (to use the same computation)
+    Function to compute the Spearman correlation between the similarity scores and human scores (labels).
+    """
+    return round(spearmanr(similarity_scores, human_scores).correlation, 6)
+
+def read_embedding(rows):
+    embeddings = []
+    for i, row in enumerate(rows):
+        word, *vector = row.split()
+        embeddings.append((word, [float(x) for x in vector]))
+        dim = len(vector)
+    return embeddings, dim
+
+isol_test = pd.read_csv('data/a2/test_data/isolated_test_y.csv', index_col='id')
+isol_test.columns = ["actual"]
 
 try:
-    test_data = pd.read_csv("../a2/test_data/test_ground_truths.csv", index_col='id')
+    test_data = {"isol": isol_test}
 except Exception:
     print('Test data label cannot be imported')
-    embed()
 
-def compute_scores(file_name, pred, repo):
-    
-    model_name = file_name.split("_test_wer_predictions.csv")[0]
+def enforce_embedding_size(embedding_list, max_allowed_embed_size=1024):
+    """Check if all the embeddings have at most max_allowed_embed_size"""
+    for embed in embedding_list:
+        if len(embed[1]) > max_allowed_embed_size:
+            return False
+    return True
 
-    if model_name not in ["character_n_gram", "subword_n_gram", "transformer"]:
-        print(f"Model name {model_name} not recognized")
-        return
-
-    comment = ""
-
-    if pred is None:
-        score = None
-        comment = "Error reading CSV!"
-
-    else:
+def compute_scores(result_files, repo):
+    pred_embeds = { "isol": {}}
+    comments = {"isol": ""}
+    scores = {"isol": None}
+    method = None
+    dataset = ""
+    for f, v in result_files.items():
         try:
-            pred = pred.set_index("id")
-            pred.columns = ["sentences"]
-
-            wer_score = wer.compute(predictions=pred["sentences"].tolist(), references=test_data["sentences"].tolist())
-            wer_score = round(wer_score, 5)
-
+            method, dataset, _, word_order, *_ = f.split("_")
+            if dataset not in ['isol']: return
+            pred_embeds[dataset][word_order] = v
         except:
-
-            wer_score = None
-            comment = "Error computing correlation!"
-
+            print(f)
+            if dataset != "":
+                comments[dataset] = "Error reading result embeddings!"
+            else:
+                comments["isol"] = "Error reading result embeddings!"
+    for _task in [ "isol"]:
+        if pred_embeds[_task] == {}:
+            scores[_task] = None
+            comments[_task] = "Error reading result embeddings!"
+    if not pred_embeds['isol'] == {}:
+        for task in ['isol']:
+            # Check: embedding size
+            try:
+                if not enforce_embedding_size(pred_embeds[task]["words1"]) or not enforce_embedding_size(pred_embeds[task]["words2"]):
+                    comments[task] = "Embedding size exceeds 1024!"
+                    continue
+                else:
+                    try:
+                        similarity = get_similarity_scores(pred_embeds[task]["words1"], pred_embeds[task]["words2"])
+                        data = test_data[task].copy()
+                        data.columns = ["actual"]
+                        data["predicted"] = similarity
+                        score = round(spearmanr(data).correlation, 6)
+                        if pd.isnull(score):
+                            score = None
+                            comments[task] = "Error computing correlation: the score is nan"
+                        else:
+                            score = score.round(5)
+                        scores[task] = score
+                    except:
+                        comments[task] = "Error computing correlation!"
+            except:
+                continue
+    # This is a general error catch, to avoid edge cases (e.g. where people used lfs => will get a None score)
+    for _task in ["isol"]:
+        if scores[_task] == None:
+            comments[_task] = "Error computing correlation!"
+    print("scores and comments", scores, comments)
     return {
-
         # Required: name of leaderboard file.
-        "leaderboard": "leaderboard_hub",
-
-        "Score":       wer_score,
-        "Method":      model_name,
-        "Team":        repo["name"][len(REPO_ASSIGNMENT_PREFIX):],
-        "Members":     " ".join(repo["team"]),
-        "Comment":     comment,
-
+        "leaderboard": "leaderboard_isol",
+        "Score":       scores["isol"],
+        "Method":     method,
+        "Member":     " ".join(repo["member"]),
+        "Comment":     comments["isol"],
     }
 
 def sort_scores(leaderboards):
@@ -120,14 +179,13 @@ def sort_scores(leaderboards):
         leaderboards
         .sort_values([
             "Score",
-            "Team",
-        ], ascending = True)
+            "Member",
+        ], ascending = False)
     )
 
 ################################################################################
 # API authentication, find organization and leaderboard repo.
 ################################################################################
-
 git = Github(*GITHUB_TOKEN)
 org = git.get_organization(CLASS)
 leaderboard_repo = org.get_repo(LEADERBOARD_REPO_NAME)
@@ -144,7 +202,7 @@ repos = [
 
         "git":  repo,
         "name": repo.name,
-        "team": sorted([
+        "member": sorted([
             c.login for c in repo.get_collaborators()
             if c.login not in STAFF
         ]),
@@ -157,78 +215,78 @@ repos = [
 ]
 
 # Remove all staff member teams.
-
-repos = [repo for repo in repos if len(repo["team"]) > 0 and not any(staff in repo["name"] for staff in STAFF)]
+repos = [repo for repo in repos if (not any(staff in repo["name"] for staff in STAFF)) and len(repo["member"])> 0]
 
 ################################################################################
 # Extract repo files.
 ################################################################################
 
+possible_files = [
+    "word2vec_isol_test_words1_embeddings.txt",
+    "word2vec_isol_test_words2_embeddings.txt",
+]
+
 for repo in tqdm(repos, desc = "Finding files"):
-    print(repo)
-    # This check is to avoid students who removed the 'results' folder, raising a 404 error
     try:
-        res_files = repo["git"].get_contents("results")
+        repo["files"] = {
+            result_file.name: result_file
+            for result_file in repo["git"].get_contents("results")
+            if result_file.name.endswith(".txt") and result_file.name in possible_files
+        }
     except:
-        print(f"Issue: results folder not found for {repo}")
-        continue
-    
-    repo["files"] = {
-        
-        result_file.name: result_file
-        for result_file in repo["git"].get_contents("results")
-        if result_file.name in [
-            "character_n_gram_test_wer_predictions.csv",
-            "subword_n_gram_test_wer_predictions.csv",
-            "transformer_test_wer_predictions.csv",
-        ]
-
-    }
-
+        print("Not found: ", repo["name"])
+        repo["files"] = {}
 ################################################################################
 # Download files and load CSVs.
 ################################################################################
 
 for repo in tqdm(repos, desc = "Downloading files"):
+    print(repo['name'])
 
-    repo["results"] = {}
-
-    # This check is to avoid students who removed the 'results' folder, raising a 404 error
-    if "files" not in repo.keys():
-        continue
+    repo["results"] = {
+        "word2vec": {}
+    }
 
     for file_name, path in repo["files"].items():
-
         content_encoded = repo["git"].get_git_blob(path.sha).content
         content = base64.b64decode(content_encoded).decode("utf-8")
-
         try:
-            data = pd.read_csv(StringIO(content))
+            content_list = [x for x in content.split('\n') if x != '']
+            data, dim = read_embedding(content_list)
         except:
+            print("Except", file_name)
             data = None
-
-        repo["results"][file_name] = data
+        if "word2vec" in file_name:
+            repo["results"]["word2vec"][file_name] = data
+    
 
 ################################################################################
 # Compute scores and create assignment-level master leaderboard.
 ################################################################################
-
 leaderboards = []
 
 for repo in repos:
-    for result_name, result in repo["results"].items():
+    print(repo["member"])
+    for model, file_names in repo["results"].items():
+        print(model)
+        if model not in ["word2vec", "bert", "gpt2"]: continue
+        result_names = file_names.keys()
+        results = file_names.values()
+        try:
+            score_isol = compute_scores(file_names, repo)
+        except:
+            print("model", model)
+            continue
 
-        score = compute_scores(result_name, result, repo)
-
-        if score is not None:
-            leaderboards.append(score)
-
+        if score_isol is not None:
+            leaderboards.append(score_isol)
+     
 leaderboards = sort_scores(pd.DataFrame(leaderboards))
 
 ################################################################################
 # Split master leaderboard into sub-boards and commit them.
 ################################################################################
-
+print("Checking the leaderboard...")
 if len(leaderboards) != 0:
 
     for name, board in leaderboards.groupby("leaderboard"):
@@ -236,23 +294,34 @@ if len(leaderboards) != 0:
         del board["leaderboard"]
 
         csv_content = board.to_csv(index = False)
-        csv_name    = name + ".csv"
+        # csv_name    = name + ".csv"
+        csv_name    = "leaderboard.csv"
 
-        commit_message = "Leaderboard Update (revised test set)"
+        commit_message = "Leaderboard Update"
 
-        if DRY_RUN:
 
-            with open("public/" + csv_name, "w") as f:
-                f.write(csv_content)
 
-        else:
-            print(LEADERBOARD_ASSIGMENT_NAME)
-            print(csv_name)
+        if DEPLOY:
+
             leaderboard_file = leaderboard_repo.get_contents(
                 LEADERBOARD_ASSIGMENT_NAME + "/" + csv_name)
 
             print("Updating", leaderboard_file.path)
 
+            leaderboard_repo.update_file(
+                leaderboard_file.path,
+                commit_message,
+                csv_content,
+                leaderboard_file.sha)
+            
+        if SAVE_LOCAL:
+            # with open("public/" + csv_name, "w") as f:
+            #     f.write(csv_content)
+            user=git.get_user()
+            leaderboard_repo=user.get_repo("leaderboard_testing")
+            leaderboard_file = leaderboard_repo.get_contents(
+                LEADERBOARD_ASSIGMENT_NAME + "/" + csv_name)
+            print("Updating", leaderboard_file.path)
             leaderboard_repo.update_file(
                 leaderboard_file.path,
                 commit_message,
