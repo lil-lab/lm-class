@@ -7,7 +7,7 @@ title: LM-class
 order: 0
 ---
 
-<strong><small>Version: <a href="CHANGELOG.md">2025.1</a></small></strong>
+<strong><small>Version: <a href="CHANGELOG.md">2025.2</a></small></strong>
 
 <div class="row">
   <div class="col col-xl-8 col-lg-6 col-md-12 col-sm-12 col-12">
