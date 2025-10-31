@@ -52,11 +52,11 @@ LM-class is a considerable revamp of how we used to teach language modeling and 
 
 LM-class is designed and managed by <a href="https://yoavartzi.com/">Yoav Artzi</a>.
 
-### v2025.1
+### v2025
 
 Assignment revisions were done by <a href="https://chenzizhao.github.io/">Zizhao Chen</a>, <a href="https://yilun-hua.github.io/">Yilun Hua</a>, and <a href="https://shankarp8.github.io/">Shankar Padmanabhan</a>.
 
-### v2024.1beta
+### v2024
 
 Assignments were designed and created by <a href="https://annshin.github.io/">Anne Wu</a>, and <a href="https://momergul.github.io/">Omer Gul</a>.
 
