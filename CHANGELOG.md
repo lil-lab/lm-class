@@ -1,3 +1,7 @@
+---
+# No title in front matter means this page won't appear in the website navigation
+---
+
 # Changelog
 
 ## [2025.2] - 2025-10-31
