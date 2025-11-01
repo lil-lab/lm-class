@@ -26,6 +26,12 @@ external_links:
   - title: Repo
     url: https://github.com/lil-lab/lm-class
 
+# Explicitly specify which pages appear in the header navigation
+header_pages:
+  - lectures.md
+  - assignments.md
+
+
 # Build settings
 markdown: kramdown
 theme: minima
