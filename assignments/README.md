@@ -1,4 +1,4 @@
-# Setting up assignments & Checklist
+# Setting Up Assignments and Checklist
 
 - The instructions & assignments .pdf files, the starter code and an example of solution are in the `a{1, 2, 3, 4}` subfolders
 
