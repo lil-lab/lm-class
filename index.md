@@ -27,7 +27,7 @@ order: 0
 
 ## Issues and Future Plans
 
-LM-class is very much work in progress. We maintain <a href="https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit#heading=h.cdynfr8juu90">a document with issues that I am considering to modify or fix</a>, and plan to revisit many of them in the next revision. Feel free to leave comments there.
+LM-class is very much work in progress. We maintain <a href="https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit#heading=h.cdynfr8juu90">a document with issues that I am considering to modify or fix</a>, and plan to revisit them in future revisions. Feel free to leave comments there.
 
 There are several topics not covered by the current version of the lectures, and that we would like to add in the future:
 
@@ -37,7 +37,7 @@ There are several topics not covered by the current version of the lectures, and
 4. RNNs and CNNs
 5. Arena-style LLM evaluation
 
-I am also considering adding a PyTorch tutorial, with focus on:
+We are also considering further developing the hand-on PyTorch tutorial to further demonstrate:
 
 1. Setting up experiments
 2. Handling data
