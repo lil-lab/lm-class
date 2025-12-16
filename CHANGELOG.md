@@ -1,5 +1,8 @@
 # Changelog
 
+## [2025.3] - 2025-12-15
+- Added PPTX version of all the lectures. The conversion was not verified.
+
 ## [2025.2] - 2025-10-31
 
 - Added a slide to the neural networks deck (#3) about GPU speeds up not always showing
