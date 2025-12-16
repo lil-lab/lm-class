@@ -11,7 +11,7 @@ The lectures constitute a coherent sequence, where later sections assume concept
 
 We are maintaining a [document of open issues](https://docs.google.com/document/d/1aAYaRvR1BauC4RS5TzCeM4fCbTbnPwQVcjlMAVMlTjU/edit?usp=sharing), including with feedback from other researchers and instructors. It is recommended to consult this document if using this material.
 
-Want to grab all the lecture content at once? Just grab the GitHub [repository](https://github.com/lil-lab/lm-class/tree/main/lectures).
+Want to grab all the lecture content at once? Just grab the GitHub [repository](https://github.com/lil-lab/lm-class/tree/main/lectures). The repository also included converted .pptx files, although the conversion output was not verified. 
 
 ## Warming Up
 
