@@ -1,5 +1,8 @@
 # Changelog
 
+## [2025.4] - 2026-01-24
+- Improved documentation and support of PowerPoint version of the lectures. 
+
 ## [2025.3] - 2025-12-15
 - Added PPTX version of all the lectures. The conversion was not verified.
 

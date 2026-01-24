@@ -1,0 +1,3 @@
+# PowerPoint Versions
+
+The .pptx files in this directory are best-effort conversion. For many of the decks, PowerPoint required a repair process. We include the original conversion and the repaired version. The files include fonts, when possible. When a repaired version is available, the repaired version is the one that attempts to include the fonts. In general, we advise against using these conversions, and using the Keynote and PDF versions if at all possible. 
