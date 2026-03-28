@@ -1,5 +1,9 @@
 # Changelog
 
+## [2025.5] - 2026-03-27
+- Fixed typos in assignment file names that could cause confusions. Sorry. 
+- Updated A3 rubric to updated assignment. 
+
 ## [2025.4] - 2026-01-24
 - Improved documentation and support of PowerPoint version of the lectures. 
 

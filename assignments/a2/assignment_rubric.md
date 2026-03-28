@@ -1,4 +1,4 @@
-Assignment 3 Rubric
+Assignment 2 Rubric
 ===================
 
 Section 1: word2vec training (20 pt)
